@@ -126,6 +126,18 @@ video {
     }
 }
 
+/* Name Fields on the same line */
+.name-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.name-container input {
+    width: 100%;
+}
+
+/* Input Field Styling */
 .modal-content input {
     width: 100%;
     padding: 10px;
@@ -134,8 +146,9 @@ video {
     border: 1px solid #ccc;
 }
 
-.switch-option {
-    margin-top: 10px;
+/* Bold Sign Up Button */
+.modal-btn {
+    font-weight: bold;
 }
 
 /* Close button styling */
