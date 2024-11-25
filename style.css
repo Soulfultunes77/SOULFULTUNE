@@ -8,6 +8,43 @@
 body {
     font-family: Arial, sans-serif;
     scroll-behavior: smooth;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+}
+
+/* Fade-in animation for body */
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+/* Loading Screen Animation */
+#loadingScreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.loader {
+    border: 10px solid #f3f3f3;
+    border-top: 10px solid #007bff;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 /* Video Background */
@@ -36,21 +73,6 @@ video {
     height: 100vh;
     color: #fff;
     text-align: center;
-}
-
-.logo-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.logo {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 10px;
 }
 
 /* Typing Animation */
@@ -87,6 +109,7 @@ video {
     width: 50%;
     max-width: 250px;
     transition: all 0.3s ease;
+    font-weight: bold; /* Make the buttons bold */
 }
 
 .action-btn:hover, .modal-btn:hover {
@@ -159,6 +182,15 @@ video {
     position: absolute;
     top: 10px;
     right: 10px;
+}
+
+/* Logo Styling (Circular Image) */
+.logo {
+    width: 200px; /* Set width of the image */
+    height: 200px; /* Set height of the image equal to the width */
+    border-radius: 50%; /* Make the image circular */
+    object-fit: cover; /* Ensure the image fills the circle without distortion */
+    margin-bottom: 10px;
 }
 
 /* Responsive Design */
