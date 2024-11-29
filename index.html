@@ -5,6 +5,93 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SOULFULTUNE Dashboard</title>
     <link rel="stylesheet" href="style.css">
+    <script type="module">
+        // Firebase SDK CDN
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendEmailVerification, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+        import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js"; // Firestore for saving data
+
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBWUgDGKxItsHeNiluSEAotMu1wnV_2E1I",
+            authDomain: "soulfultune-fe673.firebaseapp.com",
+            databaseURL: "https://soulfultune-fe673-default-rtdb.firebaseio.com",
+            projectId: "soulfultune-fe673",
+            storageBucket: "soulfultune-fe673.firebasestorage.app",
+            messagingSenderId: "284247467429",
+            appId: "1:284247467429:web:37aad7742411caa529f44c",
+            measurementId: "G-ZFRTMLQXCY"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth();
+        const db = getFirestore(app);
+
+        // Login Function
+        document.getElementById("loginForm").addEventListener("submit", async (event) => {
+            event.preventDefault();
+            const email = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            try {
+                const userCredential = await signInWithEmailAndPassword(auth, email, password);
+                alert("Login Successful!");
+                location.reload();
+            } catch (error) {
+                alert(error.message);
+            }
+        });
+
+        // Sign Up Function
+        document.getElementById("signUpForm").addEventListener("submit", async (event) => {
+            event.preventDefault();
+            const firstName = document.getElementById("firstName").value;
+            const lastName = document.getElementById("lastName").value;
+            const username = document.getElementById("newUsername").value;
+            const email = document.getElementById("email").value;
+            const phoneNumber = document.getElementById("phoneNumber").value;
+            const password = document.getElementById("newPassword").value;
+
+            try {
+                // Firebase sign up
+                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+
+                // Send verification email
+                const user = userCredential.user;
+                await sendEmailVerification(user);
+
+                // Save additional user info to Firestore
+                await addDoc(collection(db, "users"), {
+                    firstName: firstName,
+                    lastName: lastName,
+                    username: username,
+                    email: email,
+                    phoneNumber: phoneNumber
+                });
+
+                alert("Sign Up Successful! Please check your email for verification.");
+                location.reload();
+            } catch (error) {
+                alert(error.message);
+            }
+        });
+
+        // Forgot Password Function
+        document.getElementById("forgotPasswordForm").addEventListener("submit", async (event) => {
+            event.preventDefault();
+            const email = document.getElementById("forgotEmail").value;
+
+            try {
+                // Send password reset email
+                await sendPasswordResetEmail(auth, email);
+                alert("Password reset email sent! Please check your inbox.");
+            } catch (error) {
+                alert(error.message);
+            }
+        });
+
+    </script>
 </head>
 <body>
 
@@ -30,20 +117,34 @@
     <div id="loginModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal()">&times;</span>
-            <h2></h2>
+            <h2>Login</h2>
             <form id="loginForm">
-                <input type="text" id="username" name="username" placeholder="Username" required>
+                <input type="email" id="username" name="username" placeholder="Email ID" required>
                 <input type="password" id="password" name="password" placeholder="Password" required>
                 <button type="submit" class="modal-btn">Login</button>
             </form>
+           <p><a href="javascript:void(0)" onclick="ForgotPasswordModal()">Forgot your password?</a></p>
         </div>
     </div>
+
+         <!-- Forgot Password Modal -->
+    <div id="forgotPasswordModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeForgotPasswordModal()">&times;</span>
+            <h2>Forgot Password</h2>
+            <form id="forgotPasswordForm">
+                <input type="email" id="forgotEmail" name="forgotEmail" placeholder="Enter your email ID" required>
+                <button type="submit" class="modal-btn">Reset Password</button>
+            </form>
+        </div>
+    </div>
+
 
     <!-- Sign Up Modal -->
     <div id="signUpModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeSignUpModal()">&times;</span>
-            <h2></h2>
+            <h2>Sign Up</h2>
             <form id="signUpForm">
                 <div class="name-container">
                     <input type="text" id="firstName" name="firstName" placeholder="First Name" required>
@@ -58,7 +159,9 @@
             </form>
         </div>
     </div>
-
+       
+       
+       
     <script src="script.js"></script>
 </body>
 </html>
