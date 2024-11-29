@@ -225,3 +225,9 @@ video {
         font-size: 14px;
     }
 }
+
+.logo-video {
+    width: 150px; /* ইমেজের সাইজ অনুযায়ী পরিবর্তন করুন */
+    height: 150px;
+    border-radius: 50%; /* যদি গোল আকৃতি চাই */
+}
