@@ -39,3 +39,13 @@ window.onload = function() {
         document.getElementById('loadingScreen').style.display = 'none'; // Hide loading screen after loading
     }, 3000);  // Adjust this time based on your loading duration
 }
+
+// Forgot Password Modal ওপেন করার ফাংশন
+function ForgotPasswordModal() {
+    document.getElementById('forgotPasswordModal').style.display = 'flex';
+}
+
+// Forgot Password Modal বন্ধ করার ফাংশন
+function closeForgotPasswordModal() {
+    document.getElementById('forgotPasswordModal').style.display = 'none';
+}
