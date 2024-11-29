@@ -139,9 +139,13 @@ await setDoc(doc(db, "users", user.uid), {
     <!-- Main Content -->
     <div class="container">
         <div class="logo-container">
-            <img src="assets/images/logo.png" alt="Logo" class="logo">
-            <h1 class="typing">SOULFULTUNE</h1>
-        </div>
+             <!-- লোগো হিসেবে ভিডিও -->
+              <video class="logo-video" autoplay loop muted>
+                <source src="assets/videos/logo-video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+                </video>
+              <h1 class="typing">SOULFULTUNE</h1>
+             </div>
         <button class="action-btn" onclick="openModal()">Login</button>
         <button class="action-btn" onclick="showSignUp()">Sign Up</button>
     </div>
