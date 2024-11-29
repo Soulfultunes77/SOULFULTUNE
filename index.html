@@ -90,6 +90,39 @@
                 alert(error.message);
             }
         });
+        
+        // Login Function
+document.getElementById("loginForm").addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const email = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+
+    try {
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        alert("Login Successful!");
+        
+        // Redirect to home.html after successful login
+        window.location.href = "home.html"; // Replace "home.html" with your actual home page path
+    } catch (error) {
+        alert(error.message);
+    }
+});
+
+await addDoc(collection(db, "users"), {
+    firstName: firstName,
+    lastName: lastName,
+    username: username,
+    email: email,
+    phoneNumber: phoneNumber,
+});
+
+await setDoc(doc(db, "users", user.uid), {
+    firstName: firstName,
+    lastName: lastName,
+    username: username,
+    email: email,
+    phoneNumber: phoneNumber,
+});
 
     </script>
 </head>
@@ -117,17 +150,17 @@
     <div id="loginModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal()">&times;</span>
-            <h2>SOULFULTUNE</h2>
+            <h2>Login</h2>
             <form id="loginForm">
                 <input type="email" id="username" name="username" placeholder="Email ID" required>
                 <input type="password" id="password" name="password" placeholder="Password" required>
                 <button type="submit" class="modal-btn">Login</button>
             </form>
-           <p><a href="javascript:void(0)" onclick="ForgotPasswordModal()">Forgot your password?</a></p>
+            <p><a href="javascript:void(0)" onclick="ForgotPasswordModal()">Forgot your password?</a></p>
         </div>
     </div>
 
-         <!-- Forgot Password Modal -->
+    <!-- Forgot Password Modal -->
     <div id="forgotPasswordModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeForgotPasswordModal()">&times;</span>
@@ -139,12 +172,11 @@
         </div>
     </div>
 
-
     <!-- Sign Up Modal -->
     <div id="signUpModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeSignUpModal()">&times;</span>
-            <h2>SOULFULTUNE</h2>
+            <h2>Sign Up</h2>
             <form id="signUpForm">
                 <div class="name-container">
                     <input type="text" id="firstName" name="firstName" placeholder="First Name" required>
@@ -159,9 +191,7 @@
             </form>
         </div>
     </div>
-       
-       
-       
+
     <script src="script.js"></script>
 </body>
 </html>
