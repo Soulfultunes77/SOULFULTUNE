@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOULFULTUNE Dashboard</title>
+    <style>
+        /* আপনার পূর্বের ডিজাইন অনুযায়ী সিএসএস কোড */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .user-info {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .user-info p {
+            font-size: 18px;
+            color: #333;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+    </style>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+        import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBWUgDGKxItsHeNiluSEAotMu1wnV_2E1I",
+            authDomain: "soulfultune-fe673.firebaseapp.com",
+            projectId: "soulfultune-fe673",
+            storageBucket: "soulfultune-fe673.appspot.com",
+            messagingSenderId: "284247467429",
+            appId: "1:284247467429:web:37aad7742411caa529f44c",
+            measurementId: "G-ZFRTMLQXCY"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth();
+
+        // Display user information and manage logout
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                // Display user information
+                document.getElementById("userEmail").textContent = `Email: ${user.email}`;
+                document.getElementById("userId").textContent = `User ID: ${user.uid}`;
+            } else {
+                // Redirect to login page if not logged in
+                window.location.href = "login.html";
+            }
+        });
+
+        // Log out function
+        async function logOut() {
+            try {
+                await signOut(auth); // Sign out from Firebase
+                alert("Logged out successfully!");
+                window.location.href = "login.html"; // Redirect to login page after logout
+            } catch (error) {
+                console.error("Error during logout: ", error);
+                alert("Failed to log out. Please try again.");
+            }
+        }
+        
+        // Add event listener for logout button (alternative approach)
+        window.addEventListener('load', function() {
+            const logoutButton = document.getElementById('logoutButton');
+            if (logoutButton) {
+                logoutButton.addEventListener('click', logOut);
+            }
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Welcome to SOULFULTUNE</h1>
+    </header>
+
+    <div class="container">
+        <div class="user-info">
+            <h2>User Information</h2>
+            <p id="userEmail"></p>
+            <p id="userId"></p>
+
+            <!-- Log Out Button -->
+            <button id="logoutButton">Log Out</button>
+        </div>
+    </div>
+</body>
+</html>
