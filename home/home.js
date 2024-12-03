@@ -111,7 +111,7 @@ document.getElementById("logoutButton").addEventListener("click", () => {
     signOut(auth)
         .then(() => {
             alert("Successfully logged out!");
-            window.location.href = "https://soulfultunes77.github.io/SOULFULTUNE/index.html"; // Redirect to login page
+            window.location.href = "https://soulfultunes77.github.io/SOULFULTUNE/"; // Redirect to login page
         })
         .catch((error) => {
             console.error("Error logging out:", error);
