@@ -216,7 +216,44 @@
             };
         });
 
-        // Other existing event listeners (update profile, logout) remain unchanged
+        // Update Profile Button Handler
+        document.getElementById("updateButton").addEventListener("click", async () => {
+            const fullName = document.getElementById("fullNameInput").value;
+            const phoneNumber = document.getElementById("phoneNumberInput").value;
+            const user = auth.currentUser;
+
+            if (fullName && phoneNumber) {
+                try {
+                    const userDocRef = doc(db, "users", user.uid);
+                    await updateDoc(userDocRef, {
+                        fullName: fullName,
+                        phoneNumber: phoneNumber
+                    });
+                    alert("Profile updated successfully!");
+                    // Update the display to show the new information
+                    document.getElementById("fullNameDisplay").textContent = `Name: ${fullName}`;
+                    document.getElementById("phoneNumberDisplay").textContent = `Phone Number: ${phoneNumber}`;
+                } catch (error) {
+                    console.error("Error updating profile:", error);
+                    alert("Failed to update profile.");
+                }
+            } else {
+                alert("Please fill in both full name and phone number.");
+            }
+        });
+
+        // Logout Button Handler
+        document.getElementById("logoutButton").addEventListener("click", () => {
+            signOut(auth)
+                .then(() => {
+                    alert("Successfully logged out!");
+                    window.location.href = "login.html"; // Redirect to login page
+                })
+                .catch((error) => {
+                    console.error("Error logging out:", error);
+                    alert("Failed to log out.");
+                });
+        });
     </script>
 </body>
 </html>
