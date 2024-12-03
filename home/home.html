@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Your Profile - SoulfulTune</title>
+    <!-- Link to External CSS File -->
+    <link rel="stylesheet" href="home.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Update Your Profile</h1>
+
+        <!-- Profile Logo -->
+        <div class="logo-container" id="logoContainer">
+            <img src="default-logo.png" alt="Profile Logo" id="profileLogo">
+        </div>
+
+        <!-- Display Logged-In User Information -->
+        <div class="user-info">
+            <p id="userUIDDisplay">UID: Loading...</p>
+            <p id="userEmail">Email: Loading...</p>
+            <p id="fullNameDisplay">Name: Loading...</p>
+            <p id="phoneNumberDisplay">Phone Number: Loading...</p>
+        </div>
+
+        <!-- Input field to update full name -->
+        <label for="fullNameInput">Full Name:</label>
+        <input type="text" id="fullNameInput" placeholder="Enter your full name"><br>
+
+        <!-- Input field to update phone number -->
+        <label for="phoneNumberInput">Phone Number:</label>
+        <input type="text" id="phoneNumberInput" placeholder="Enter your phone number"><br>
+
+        <!-- Button Container -->
+        <div class="button-container">
+            <!-- Update Button -->
+            <button id="updateButton" class="update-btn">Update Profile</button>
+
+            <!-- Logout Button -->
+            <button id="logoutButton" class="logout-btn">Logout</button>
+        </div>
+    </div>
+
+    <!-- Link to External JS File -->
+    <script type="module" src="home.js"></script>
+</body>
+</html>
