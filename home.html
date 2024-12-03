@@ -89,6 +89,13 @@
             border-radius: 50%;
             border: 2px solid #ddd;
         }
+
+        /* Separate the buttons with margin */
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px; /* This will create space between the buttons */
+        }
     </style>
 </head>
 <body>
@@ -116,11 +123,14 @@
         <label for="phoneNumberInput">Phone Number:</label>
         <input type="text" id="phoneNumberInput" placeholder="Enter your phone number"><br>
 
-        <!-- Update Button -->
-        <button id="updateButton">Update Profile</button>
+        <!-- Button Container -->
+        <div class="button-container">
+            <!-- Update Button -->
+            <button id="updateButton" class="update-btn">Update Profile</button>
 
-        <!-- Logout Button -->
-        <button id="logoutButton" class="logout-btn">Logout</button>
+            <!-- Logout Button -->
+            <button id="logoutButton" class="logout-btn">Logout</button>
+        </div>
     </div>
 
     <script type="module">
