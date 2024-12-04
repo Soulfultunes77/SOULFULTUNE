@@ -8,6 +8,54 @@
     <link rel="stylesheet" href="home.css">
 </head>
 <body>
+    <!-- Header with Menu -->
+    <div class="header">
+        <div class="menu-icon" onclick="openLeftMenu()">&#9776;</div>
+        <img src="assets/images/logo.png" alt="Logo" class="logo">
+        <div class="title">SOULFULTUNE</div>
+        <div class="header-icons">
+            <span class="notification">&#128276;</span>
+            <span class="search">&#128269;</span>
+            <span class="three-dots" onclick="openRightMenu()">&#8942;</span>
+        </div>
+    </div>
+
+    <!-- Left Sidebar Menu -->
+    <div class="sidebar left-sidebar" id="leftMenu">
+        <button class="close-btn" onclick="closeLeftMenu()">&#10005;</button>
+        <ul>
+            <li><span class="icon">&#127968;</span> Home</li>
+            <li><span class="icon">&#128100;</span> About</li>
+            <li><span class="icon">&#128187;</span> Services</li>
+            <li><span class="icon">&#128222;</span> Contact</li>
+        </ul>
+    </div>
+
+    <!-- Right Sidebar Menu -->
+    <div class="sidebar right-sidebar" id="rightMenu">
+        <button class="close-btn" onclick="closeRightMenu()">&#10005;</button>
+        <ul>
+            <li><span class="icon">&#128100;</span> Profile</li>
+            <li><span class="icon">&#9881;</span> Settings</li>
+            <li><span class="icon">&#128276;</span> Notifications</li>
+                <!-- Logout Button -->
+        <button id="logoutButton" ><li><span  class="icon" >&#128682;</span> Logout</li></button>
+        </ul>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Main Content -->
     <div class="container">
         <h1>Update Your Profile</h1>
 
@@ -16,7 +64,7 @@
             <img src="default-logo.png" alt="Profile Logo" id="profileLogo">
         </div>
 
-        <!-- Display Logged-In User Information -->
+        <!-- User Information -->
         <div class="user-info">
             <p id="userUIDDisplay">UID: Loading...</p>
             <p id="userEmail">Email: Loading...</p>
@@ -24,11 +72,11 @@
             <p id="phoneNumberDisplay">Phone Number: Loading...</p>
         </div>
 
-        <!-- Input field to update full name -->
+        <!-- Input field for updating full name -->
         <label for="fullNameInput">Full Name:</label>
         <input type="text" id="fullNameInput" placeholder="Enter your full name"><br>
 
-        <!-- Input field to update phone number -->
+        <!-- Input field for updating phone number -->
         <label for="phoneNumberInput">Phone Number:</label>
         <input type="text" id="phoneNumberInput" placeholder="Enter your phone number"><br>
 
@@ -42,7 +90,8 @@
         </div>
     </div>
 
-    <!-- Link to External JS File -->
+    <!-- JavaScript -->
+    <script src="style.js"></script>
     <script type="module" src="home.js"></script>
 </body>
 </html>
