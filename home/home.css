@@ -1,90 +1,114 @@
-/* Your existing CSS styles */
+/* General Reset */
 body {
-    font-family: Arial, sans-serif;
     margin: 0;
-    padding: 0;
-    background-color: #f4f4f9;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    font-family: Arial, sans-serif;
 }
 
-.container {
-    background-color: white;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 400px;
+/* Header Styles */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.menu-icon {
+    font-size: 24px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.logo {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-left: 10px;
+}
+
+.title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 10px;
+    flex-grow: 1;
     text-align: center;
 }
 
-h1 {
-    color: #333;
-}
-
-label {
-    font-size: 14px;
-    margin-bottom: 6px;
-    display: block;
-    text-align: left;
-}
-
-input[type="text"], input[type="email"], input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0 20px 0;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
-
-button {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 4px;
-    width: 100%;
-}
-
-button:hover {
-    background-color: #45a049;
-}
-
-.user-info {
-    margin-bottom: 20px;
-}
-
-.user-info p {
-    font-size: 14px;
-    margin: 5px 0;
-    color: #333;
-}
-
-.logout-btn {
-    background-color: #f44336;
-}
-
-.logout-btn:hover {
-    background-color: #e41e1e;
-}
-
-.logo-container {
-    margin-bottom: 20px;
-    cursor: pointer;
-}
-
-.logo-container img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    border: 2px solid #ddd;
-}
-
-.button-container {
+.header-icons {
     display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.header-icons .notification,
+.header-icons .search {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.header-icons .three-dots {
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 250px;
+    background-color: #333;
+    color: white;
+    display: none; /* Hidden by default */
     flex-direction: column;
+    padding: 20px;
+    z-index: 1000;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.left-sidebar {
+    left: 0;
+}
+
+.right-sidebar {
+    right: 0;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul li {
+    padding: 10px 0;
+    border-bottom: 1px solid #555;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
     gap: 10px;
+}
+
+.sidebar ul li:hover {
+    background-color: #444;
+}
+
+.sidebar ul .icon {
+    font-size: 18px;
+}
+
+.close-btn {
+    font-size: 20px;
+    background: none;
+    border: none;
+    color: white;
+    align-self: flex-end;
+    cursor: pointer;
+    margin-bottom: 20px;
 }
