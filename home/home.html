@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Update Your Profile - SoulfulTune</title>
-    <!-- Link to External CSS File -->
     <link rel="stylesheet" href="home.css">
 </head>
 <body>
@@ -35,63 +34,44 @@
     <div class="sidebar right-sidebar" id="rightMenu">
         <button class="close-btn" onclick="closeRightMenu()">&#10005;</button>
         <ul>
-            <li><span class="icon">&#128100;</span> Profile</li>
+            <li onclick="openProfilePopup()"><span class="icon">&#128100;</span> Profile</li>
             <li><span class="icon">&#9881;</span> Settings</li>
             <li><span class="icon">&#128276;</span> Notifications</li>
-                <!-- Logout Button -->
-        <button id="logoutButton" ><li><span  class="icon" >&#128682;</span> Logout</li></button>
+            <li onclick="logoutUser()"><span class="icon">&#128282;</span> Logout</li>
         </ul>
     </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- Main Content -->
-    <div class="container">
-        <h1>Update Your Profile</h1>
-
-        <!-- Profile Logo -->
-        <div class="logo-container" id="logoContainer">
-            <img src="default-logo.png" alt="Profile Logo" id="profileLogo">
-        </div>
-
-        <!-- User Information -->
-        <div class="user-info">
-            <p id="userUIDDisplay">UID: Loading...</p>
-            <p id="userEmail">Email: Loading...</p>
-            <p id="fullNameDisplay">Name: Loading...</p>
-            <p id="phoneNumberDisplay">Phone Number: Loading...</p>
-        </div>
-
-        <!-- Input field for updating full name -->
-        <label for="fullNameInput">Full Name:</label>
-        <input type="text" id="fullNameInput" placeholder="Enter your full name"><br>
-
-        <!-- Input field for updating phone number -->
-        <label for="phoneNumberInput">Phone Number:</label>
-        <input type="text" id="phoneNumberInput" placeholder="Enter your phone number"><br>
-
-        <!-- Button Container -->
-        <div class="button-container">
-            <!-- Update Button -->
-            <button id="updateButton" class="update-btn">Update Profile</button>
-
-            <!-- Logout Button -->
-            <button id="logoutButton" class="logout-btn">Logout</button>
+    <!-- Profile Popup -->
+    <div class="popup" id="profilePopup">
+        <div class="popup-content">
+            <span class="close-btn" onclick="closeProfilePopup()">&#10005;</span>
+            <h1><p id="fullNameDisplay"> Loading...</p></h1>
+            <div class="logo-container" id="logoContainer">
+                <img src="assets/images/logo.png" alt="Profile Logo" id="profileLogo">
+            </div>
+            <div class="user-info">
+                <p id="userUIDDisplay">UID: Loading...</p>
+                <p id="userEmail">Email: Loading...</p>
+                <p id="phoneNumberDisplay">Phone Number: Loading...</p>
+            </div>
+            <button class="update-form-btn" onclick="openUpdateForm()">Open Update Form</button>
         </div>
     </div>
 
     <!-- JavaScript -->
     <script src="style.js"></script>
     <script type="module" src="home.js"></script>
+
+    <!-- Logout Function -->
+    <script>
+     function logoutUser() {
+    // এখানে আপনি ব্যবহারকারীর লগিন টোকেন বা সেশন মুছে দিতে পারেন
+    localStorage.removeItem('userToken');  // যদি আপনি localStorage ব্যবহার করেন
+    sessionStorage.removeItem('userToken');  // অথবা sessionStorage
+
+    // লগ আউট করার পর ব্যবহারকারীকে লগইন পেজ বা হোমপেজে রিডাইরেক্ট করুন
+    window.location.href = '../index.html';  // লগ আউটের পর লগইন পেজে রিডাইরেক্ট
+}
+    </script>
 </body>
 </html>
