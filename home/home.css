@@ -63,7 +63,7 @@ body {
     top: 0;
     bottom: 0;
     width: 250px;
-    background-color: #333;
+    background-color: #005580;
     color: white;
     display: none; /* Hidden by default */
     flex-direction: column;
@@ -162,4 +162,118 @@ body {
     height: 100px; /* ইচ্ছেমতো সাইজ পরিবর্তন করুন */
     object-fit: cover; /* লোগোটি উপযুক্ত আকারে কাটবে */
     border-radius: 50%; /* লোগোটি গোলাকার হবে */
+}
+
+
+
+
+
+/* Default light mode styles */
+body {
+    background-color: #fff;
+    color: #000;
+    font-family: Arial, sans-serif;
+}
+
+/* Header and menu styles */
+.header, .sidebar {
+    background-color: #fff;
+}
+
+.header .title {
+    color: #000;
+}
+
+/* Sidebar menu items */
+.sidebar ul li {
+    color: #000;
+}
+
+/* Dark mode styles */
+body.dark-mode {
+    background-color: #333;
+    color: #fff;
+}
+
+/* Dark mode for header and menu */
+body.dark-mode .header, 
+body.dark-mode .sidebar {
+    background-color: #222;
+}
+
+/* Dark mode for header title */
+body.dark-mode .header .title {
+    color: #fff;
+}
+
+/* Dark mode for sidebar menu items */
+body.dark-mode .sidebar ul li {
+    color: #fff;
+}
+
+/* Dark mode for popups */
+body.dark-mode .popup-content {
+    background-color: #444; /* Dark background for popups */
+    color: #fff; /* White text */
+}
+
+/* Popup default styles */
+.popup-content {
+    background-color: #fff; /* Light background for popups */
+    color: #000; /* Black text */
+}
+
+/* Close button styles for popups */
+.popup-content .close-btn {
+    color: #000; /* Default close button color */
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Dark mode close button styles */
+body.dark-mode .popup-content .close-btn {
+    color: #fff; /* White close button color in dark mode */
+}
+
+/* Button styles for switching themes */
+.theme-toggle button {
+    background-color: #0066cc;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.theme-toggle button:hover {
+    background-color: #005bb5;
+}
+
+/* Close button styles for sidebar */
+.sidebar .close-btn {
+    color: #000; /* Default close button color */
+    font-size: 30px;
+    cursor: pointer;
+}
+
+/* Dark mode close button styles for sidebar */
+body.dark-mode .sidebar .close-btn {
+    color: #fff; /* White close button color in dark mode */
+}
+
+/* Specific styles for left and right sidebar close button */
+.sidebar.left-sidebar .close-btn {
+    color: #000; /* Light mode color */
+}
+
+.sidebar.right-sidebar .close-btn {
+    color: #000; /* Light mode color */
+}
+
+/* Dark mode styles for left and right sidebar close buttons */
+body.dark-mode .sidebar.left-sidebar .close-btn {
+    color: #fff; /* Dark mode color */
+}
+
+body.dark-mode .sidebar.right-sidebar .close-btn {
+    color: #fff; /* Dark mode color */
 }
