@@ -6,7 +6,7 @@
     <title>Update Your Profile - SoulfulTune</title>
     <link rel="stylesheet" href="home.css">
 </head>
-<body>
+<body id="body">
     <!-- Header with Menu -->
     <div class="header">
         <div class="menu-icon" onclick="openLeftMenu()">&#9776;</div>
@@ -35,7 +35,7 @@
         <button class="close-btn" onclick="closeRightMenu()">&#10005;</button>
         <ul>
             <li onclick="openProfilePopup()"><span class="icon">&#128100;</span> Profile</li>
-            <li><span class="icon">&#9881;</span> Settings</li>
+            <li onclick="openSettingsPopup()"><span class="icon">&#9881;</span> Settings</li>
             <li><span class="icon">&#128276;</span> Notifications</li>
             <li onclick="logoutUser()"><span class="icon">&#128282;</span> Logout</li>
         </ul>
@@ -58,20 +58,57 @@
         </div>
     </div>
 
+    <!-- Settings Popup for Dark/Light Mode -->
+    <div class="popup" id="settingsPopup">
+        <div class="popup-content">
+            <span class="close-btn" onclick="closeSettingsPopup()">&#10005;</span>
+            <h2>Settings</h2>
+            <div class="theme-toggle">
+                <button id="themeToggle" onclick="toggleTheme()">Switch to Dark Mode</button>
+            </div>
+        </div>
+    </div>
+
     <!-- JavaScript -->
     <script src="style.js"></script>
     <script type="module" src="home.js"></script>
-
-    <!-- Logout Function -->
     <script>
-     function logoutUser() {
-    // এখানে আপনি ব্যবহারকারীর লগিন টোকেন বা সেশন মুছে দিতে পারেন
-    localStorage.removeItem('userToken');  // যদি আপনি localStorage ব্যবহার করেন
-    sessionStorage.removeItem('userToken');  // অথবা sessionStorage
+        // Dark mode toggle logic
+        let isDarkMode = false;
 
-    // লগ আউট করার পর ব্যবহারকারীকে লগইন পেজ বা হোমপেজে রিডাইরেক্ট করুন
-    window.location.href = '../index.html';  // লগ আউটের পর লগইন পেজে রিডাইরেক্ট
-}
+        function toggleTheme() {
+            const body = document.getElementById("body");
+            const button = document.getElementById("themeToggle");
+
+            if (isDarkMode) {
+                body.classList.remove("dark-mode");
+                body.classList.add("light-mode");
+                button.textContent = "Switch to Dark Mode";
+            } else {
+                body.classList.remove("light-mode");
+                body.classList.add("dark-mode");
+                button.textContent = "Switch to Light Mode";
+            }
+            isDarkMode = !isDarkMode;
+        }
+
+        // Open settings popup
+        function openSettingsPopup() {
+            document.getElementById("settingsPopup").style.display = "block";
+        }
+
+        // Close settings popup
+        function closeSettingsPopup() {
+            document.getElementById("settingsPopup").style.display = "none";
+        }
+
+        // Logout function
+        function logoutUser() {
+            localStorage.removeItem('userToken');
+            sessionStorage.removeItem('userToken');
+            window.location.href = '../index.html';
+        }
     </script>
 </body>
 </html>
+
