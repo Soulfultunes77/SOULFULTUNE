@@ -21,3 +21,29 @@ function closeRightMenu() {
     const rightMenu = document.getElementById('rightMenu');
     rightMenu.style.display = 'none'; // Hide menu
 }
+
+
+// Open and close left menu
+function openLeftMenu() {
+    document.getElementById("leftMenu").style.display = "block";
+}
+function closeLeftMenu() {
+    document.getElementById("leftMenu").style.display = "none";
+}
+
+// Open and close right menu
+function openRightMenu() {
+    document.getElementById("rightMenu").style.display = "block";
+}
+function closeRightMenu() {
+    document.getElementById("rightMenu").style.display = "none";
+}
+
+// Open and close profile popup
+function openProfilePopup() {
+    document.getElementById("profilePopup").style.display = "block";
+}
+function closeProfilePopup() {
+    document.getElementById("profilePopup").style.display = "none";
+}
+
