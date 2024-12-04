@@ -106,3 +106,40 @@ document.getElementById("updateButton").addEventListener("click", async () => {
     }
 });
 
+
+
+// Dark mode toggle logic
+let isDarkMode = false;
+
+function toggleTheme() {
+    const body = document.getElementById("body");
+    const button = document.getElementById("themeToggle");
+
+    if (isDarkMode) {
+        body.classList.remove("dark-mode");
+        body.classList.add("light-mode");
+        button.textContent = "Switch to Dark Mode";
+    } else {
+        body.classList.remove("light-mode");
+        body.classList.add("dark-mode");
+        button.textContent = "Switch to Light Mode";
+    }
+    isDarkMode = !isDarkMode;
+}
+
+// Open settings popup
+function openSettingsPopup() {
+    document.getElementById("settingsPopup").style.display = "block";
+}
+
+// Close settings popup
+function closeSettingsPopup() {
+    document.getElementById("settingsPopup").style.display = "none";
+}
+
+// Logout function
+function logoutUser() {
+    localStorage.removeItem('userToken');
+    sessionStorage.removeItem('userToken');
+    window.location.href = '../index.html';
+}
