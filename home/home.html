@@ -18,6 +18,38 @@
             <span class="three-dots" onclick="openRightMenu()">&#8942;</span>
         </div>
     </div>
+    
+    
+    
+    
+    <!-- Search Popup -->
+<div class="popup" id="searchPopup">
+    <div class="popup-content">
+        <span class="close-btn" onclick="closeSearchPopup()">&#10005;</span>
+        <h2>Search</h2>
+        <input 
+            type="text" 
+            placeholder="Search here..." 
+            id="searchInput" 
+            onkeyup="fetchSearchResults()" 
+        />
+        <ul id="searchResults">
+            <!-- Search রেজাল্ট এখানে ডাইনামিক্যালি দেখানো হবে -->
+        </ul>
+    </div>
+</div>
+
+<!-- Notification Popup -->
+<div class="popup" id="notificationPopup">
+    <div class="popup-content">
+        <span class="close-btn" onclick="closeNotificationPopup()">&#10005;</span>
+        <h2>Notifications</h2>
+        <ul id="notificationList">
+    <li><a href="#" class="notification-link">No new notifications.</a></li>
+    <li><a href="#" class="notification-link">No new notifications.</a></li>
+        </ul>
+    </div>
+</div>
 
     <!-- Left Sidebar Menu -->
     <div class="sidebar left-sidebar" id="leftMenu">
