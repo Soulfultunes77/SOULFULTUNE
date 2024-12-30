@@ -127,19 +127,5 @@ function toggleTheme() {
     isDarkMode = !isDarkMode;
 }
 
-// Open settings popup
-function openSettingsPopup() {
-    document.getElementById("settingsPopup").style.display = "block";
-}
 
-// Close settings popup
-function closeSettingsPopup() {
-    document.getElementById("settingsPopup").style.display = "none";
-}
 
-// Logout function
-function logoutUser() {
-    localStorage.removeItem('userToken');
-    sessionStorage.removeItem('userToken');
-    window.location.href = '../index.html';
-}
