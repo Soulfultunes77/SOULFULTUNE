@@ -47,3 +47,96 @@ function closeProfilePopup() {
     document.getElementById("profilePopup").style.display = "none";
 }
 
+// Open settings popup
+function openSettingsPopup() {
+    document.getElementById("settingsPopup").style.display = "block";
+}
+
+// Close settings popup
+function closeSettingsPopup() {
+    document.getElementById("settingsPopup").style.display = "none";
+}
+
+// Logout function
+function logoutUser() {
+    localStorage.removeItem('userToken');
+    sessionStorage.removeItem('userToken');
+    window.location.href = '../index.html';
+}
+
+
+// Open search popup
+function openSearchPopup() {
+    document.getElementById("searchPopup").style.display = "block";
+}
+
+// Close search popup
+function closeSearchPopup() {
+    document.getElementById("searchPopup").style.display = "none";
+}
+
+// Open notification popup
+function openNotificationPopup() {
+    document.getElementById("notificationPopup").style.display = "block";
+}
+
+// Close notification popup
+function closeNotificationPopup() {
+    document.getElementById("notificationPopup").style.display = "none";
+}
+
+// Perform search action
+function performSearch() {
+    const searchInput = document.getElementById("searchInput").value;
+    alert(`Searching for: ${searchInput}`);
+}
+
+// Add event listeners for icons
+document.querySelector('.search').addEventListener('click', openSearchPopup);
+document.querySelector('.notification').addEventListener('click', openNotificationPopup);
+
+
+
+
+// ডাইনামিক সার্চ রেজাল্ট ফেচিং ফাংশন
+function fetchSearchResults() {
+    const query = document.getElementById("searchInput").value.trim().toLowerCase();
+    const resultsContainer = document.getElementById("searchResults");
+
+    // যদি ইনপুট ফাঁকা থাকে, রেজাল্ট ক্লিয়ার করা হবে
+    if (query === "") {
+        resultsContainer.innerHTML = "";
+        return;
+    }
+
+    // সার্চ ডেটা (ডেমো ডেটা, সার্ভারের সাথে ইন্টিগ্রেট করতে API ব্যবহার করুন)
+    const pages = [
+        { title: "Home Page", url: "home.html" },
+        { title: "About Us", url: "about.html" },
+        { title: "Services", url: "services.html" },
+        { title: "Contact Us", url: "contact.html" },
+        { title: "History", url: "history.html" }
+    ];
+
+    // ইনপুট অনুযায়ী পেজ ফিল্টার করা
+    const filteredResults = pages.filter(page => 
+        page.title.toLowerCase().includes(query)
+    );
+
+    // রেজাল্ট লিস্ট আপডেট করা
+    resultsContainer.innerHTML = "";
+
+    if (filteredResults.length > 0) {
+        filteredResults.forEach(result => {
+            const li = document.createElement("li");
+            li.textContent = result.title; // রেজাল্ট টাইটেল দেখানো
+            li.onclick = () => {
+                window.location.href = result.url; // রেজাল্ট লিংকে রিডাইরেক্ট
+            };
+            resultsContainer.appendChild(li);
+        });
+    } else {
+        // কোনো রেজাল্ট না পাওয়া গেলে
+        resultsContainer.innerHTML = "<li>No results found</li>";
+    }
+}
