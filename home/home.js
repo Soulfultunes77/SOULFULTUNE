@@ -33,7 +33,9 @@ auth.onAuthStateChanged(async (user) => {
             if (docSnap.exists()) {
                 const userData = docSnap.data();
                 document.getElementById("userEmail").textContent = `Email: ${user.email}`;
-                document.getElementById("fullNameDisplay").textContent = `Name: ${userData.fullName || "Not provided"}`;
+                document.getElementById("fullNameDisplay").textContent = `
+
+ ${userData.fullName || "Not provided"}`;
                 document.getElementById("phoneNumberDisplay").textContent = `Phone Number: ${userData.phoneNumber || "Not provided"}`;
                 document.getElementById("userUIDDisplay").textContent = `UID: ${userUID}`;
 
