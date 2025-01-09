@@ -113,7 +113,7 @@
 .cover-title {
     font-size: 20px;
     color: black;  /* লাইট মোডে টেক্সট কালো */
-    background-color: white; /* লাইট মোডে ব্যাকগ্রাউন্ড সাদা */
+    background-color: #20B2AA; /* লাইট মোডে ব্যাকগ্রাউন্ড সাদা */
 }
 
 /* Dark mode styles */
@@ -128,6 +128,6 @@
 @media (prefers-color-scheme: light) {
     .cover-title {
         color: black !important;  /* লাইট মোডে টেক্সট কালো */
-        background-color: white !important; /* লাইট মোডে ব্যাকগ্রাউন্ড সাদা */
+        background-color: #20B2AA !important; /* লাইট মোডে ব্যাকগ্রাউন্ড সাদা */
     }
 }
