@@ -59,13 +59,6 @@ function closeSettingsPopup() {
 
 
 
-// Logout function
-function logoutUser() {
-    localStorage.removeItem('userToken');
-    sessionStorage.removeItem('userToken');
-    window.location.href = '../index.html';
-}
-
 
 // Open search popup
 function openSearchPopup() {
