@@ -3,7 +3,7 @@
     display: flex;
     justify-content: space-between;  /* Left and Right titles will be spaced out */
     padding: 20px;
-    background: #333;
+    background: #20B2AA;
     width: 95%;   
     height: 20px;  
 }
@@ -95,7 +95,7 @@
     }
 
     .header h3 {
-        color: #ffffff;
+        color: #333;
         text-decoration: none;
         font-size: 18px;
         margin-top: -0mm; /* ৫ মিমি উপরে নেওয়ার জন্য */
@@ -109,3 +109,25 @@
     
     
     
+/* Default styles (light mode fallback) */
+.cover-title {
+    font-size: 20px;
+    color: black;  /* লাইট মোডে টেক্সট কালো */
+    background-color: white; /* লাইট মোডে ব্যাকগ্রাউন্ড সাদা */
+}
+
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+    .cover-title {
+        color: #333 !important;  /* ডার্ক মোডে টেক্সট সাদা */
+        background-color: #20B2AA !important; /* ডার্ক মোডে ব্যাকগ্রাউন্ড গাঢ় */
+    }
+}
+
+/* Light mode styles (optional override for clarity) */
+@media (prefers-color-scheme: light) {
+    .cover-title {
+        color: black !important;  /* লাইট মোডে টেক্সট কালো */
+        background-color: white !important; /* লাইট মোডে ব্যাকগ্রাউন্ড সাদা */
+    }
+}
