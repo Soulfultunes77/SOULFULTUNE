@@ -79,13 +79,7 @@ function checkLogin() {
 // ব্যাক বাটন নিষ্ক্রিয় করার স্ক্রিপ্ট
 history.pushState(null, null, location.href);
 window.onpopstate = function () {
-    if (!localStorage.getItem("isLoggedIn")) {
-        // যদি লগইন না থাকে, তাহলে ব্যাক বাটনে index.html-এ পাঠানো হবে
-        window.location.href = "../index.html";
-    } else {
-        // যদি লগইন থাকে, তাহলে ডিফল্ট আচরণ বজায় রাখুন
-        history.go(1);
-    }
+    history.go(1);
 };
 
 
