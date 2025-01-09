@@ -57,7 +57,30 @@ function closeSettingsPopup() {
     document.getElementById("settingsPopup").style.display = "none";
 }
 
+// লগইন ফাংশন
+function login() {
+    localStorage.setItem("isLoggedIn", "true"); // লগইন স্ট্যাটাস সেট করুন
+    window.location.href = "home/home.html"; // হোম পেজে রিডাইরেক্ট করুন
+}
 
+// লগআউট ফাংশন
+function logout() {
+    localStorage.removeItem("isLoggedIn"); // লগইন স্ট্যাটাস মুছে ফেলুন
+    window.location.href = "../index.html"; // লগইন পেজে রিডাইরেক্ট করুন
+}
+
+// লগইন চেক করার ফাংশন
+function checkLogin() {
+    if (!localStorage.getItem("isLoggedIn")) {
+        window.location.href = "../index.html"; // লগইন পেজে রিডাইরেক্ট করুন
+    }
+}
+
+// ব্যাক বাটন নিষ্ক্রিয় করার স্ক্রিপ্ট
+history.pushState(null, null, location.href);
+window.onpopstate = function () {
+    history.go(1);
+};
 
 
 // Open search popup
@@ -135,3 +158,8 @@ function fetchSearchResults() {
         resultsContainer.innerHTML = "<li>No results found</li>";
     }
 }
+
+
+
+
+
